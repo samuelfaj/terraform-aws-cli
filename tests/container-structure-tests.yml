@@ -32,3 +32,11 @@ commandTests:
     command: "aws"
     args: ["--version"]
     expectedOutput: ["aws-cli/1.18.93"]
+
+  - name: "Check Node version"
+    command: "node"
+    args: ["--v"]
+
+  - name: "Check npm version"
+    command: "npm"
+    args: ["--v"]

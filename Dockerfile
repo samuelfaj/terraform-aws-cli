@@ -32,6 +32,15 @@ RUN apt-get install -y --no-install-recommends python3-pip=18.1-5
 RUN pip3 install setuptools==47.1.1
 RUN pip3 install awscli==${AWS_CLI_VERSION}
 
+# Install Node.js
+FROM debian:${DEBIAN_VERSION} as nodejs
+ARG AWS_CLI_VERSION
+ARG PYTHON_MAJOR_VERSION
+RUN apt-get update
+RUN apt-get install curl software-properties-common
+RUN curl -sL https://deb.nodesource.com/setup_14.x | sudo bash -
+RUN apt-get install -y --no-install-recommends nodejs
+
 # Build final image
 FROM debian:${DEBIAN_VERSION}
 LABEL maintainer="bgauduch@github"
